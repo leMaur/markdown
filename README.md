@@ -1,4 +1,4 @@
-# Another Markdown parsers but with superpowers
+# Markdown parser with superpowers
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lemaur/markdown.svg?style=flat-square)](https://packagist.org/packages/lemaur/markdown)
 [![Total Downloads](https://img.shields.io/packagist/dt/lemaur/markdown.svg?style=flat-square)](https://packagist.org/packages/lemaur/markdown)
