@@ -11,7 +11,7 @@ use Lemaur\Markdown\Support\ViewFactory;
 
 class Markdown
 {
-    public static function render(?string $text = null): HtmlString|null
+    public static function render(?string $text = null): HtmlString | null
     {
         if (is_null($text)) {
             return null;
