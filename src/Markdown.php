@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lemaur\Markdown;
 
 use Illuminate\Support\HtmlString;
-use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\MarkdownConverter;
 use Lemaur\Markdown\Support\ViewFactory;
