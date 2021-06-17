@@ -2,9 +2,9 @@
 
 namespace Lemaur\Markdown;
 
+use Lemaur\Markdown\Commands\MarkdownCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Lemaur\Markdown\Commands\MarkdownCommand;
 
 class MarkdownServiceProvider extends PackageServiceProvider
 {
