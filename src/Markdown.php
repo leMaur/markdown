@@ -5,26 +5,24 @@ declare(strict_types=1);
 namespace Lemaur\Markdown;
 
 use Illuminate\Support\HtmlString;
+use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
-use League\CommonMark\MarkdownConverter;
 use Lemaur\Markdown\Support\ViewFactory;
 
 class Markdown
 {
-    public static function render(?string $text = null): HtmlString|null
+    public static function render(?string $text = null): HtmlString
     {
         if (is_null($text)) {
-            return null;
+            return new HtmlString;
         }
 
-        $environment = new Environment();
+        $environment = Environment::createCommonMarkEnvironment();
 
         collect(config('markdown.extensions', []))
             ->each(fn ($extension) => $environment->addExtension(new $extension()));
 
-        $environment->mergeConfig(config('markdown.options', []));
-
-        $converter = new MarkdownConverter($environment);
+        $converter = new CommonMarkConverter(config('markdown.options', []), $environment);
 
         $html = $converter->convertToHtml($text);
 
