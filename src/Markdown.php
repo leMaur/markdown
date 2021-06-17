@@ -7,6 +7,7 @@ namespace Lemaur\Markdown;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
+use League\CommonMark\MarkdownConverter;
 use Lemaur\Markdown\Support\ViewFactory;
 
 class Markdown
@@ -17,12 +18,14 @@ class Markdown
             return new HtmlString;
         }
 
-        $environment = Environment::createCommonMarkEnvironment();
+        $environment = new Environment();
 
-        collect(config('markdown.extensions', []))
+        collect((array) config('markdown.extensions', []))
             ->each(fn ($extension) => $environment->addExtension(new $extension()));
 
-        $converter = new CommonMarkConverter(config('markdown.options', []), $environment);
+        $environment->mergeConfig((array) config('markdown.options', []));
+
+        $converter = new MarkdownConverter($environment);
 
         $html = $converter->convertToHtml($text);
 
