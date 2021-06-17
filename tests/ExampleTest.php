@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace Lemaur\Markdown\Tests;
 
 class ExampleTest extends TestCase
 {

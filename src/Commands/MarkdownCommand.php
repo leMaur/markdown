@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Lemaur\Markdown\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MarkdownCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'markdown';
 
     public $description = 'My command';
 
