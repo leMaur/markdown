@@ -30,8 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Lemaur\\Markdown\\": "src",
-            "Lemaur\\Markdown\\Database\\Factories\\": "database/factories"
+            "Lemaur\\Markdown\\": "src"
         }
     },
     "autoload-dev": {
@@ -51,10 +50,7 @@
         "laravel": {
             "providers": [
                 "Lemaur\\Markdown\\MarkdownServiceProvider"
-            ],
-            "aliases": {
-                "Markdown": "Lemaur\\Markdown\\MarkdownFacade"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
