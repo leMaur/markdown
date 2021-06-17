@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lemaur\Markdown;
 
 use Lemaur\Markdown\Commands\MarkdownCommand;
