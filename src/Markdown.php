@@ -24,6 +24,6 @@ class Markdown
 
         $html = $converter->convertToHtml($text);
 
-        return new HtmlString((string) ViewFactory::parseComponent($html));
+        return new HtmlString((string) ViewFactory::parse($html));
     }
 }

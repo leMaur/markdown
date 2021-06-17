@@ -25,7 +25,7 @@ class ViewFactory
         return $this->rendered;
     }
 
-    public static function parseComponent(string $template, array $data = []): self
+    public static function parse(string $template, array $data = []): self
     {
         $tempDirectory = sys_get_temp_dir();
 

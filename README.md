@@ -1,29 +1,26 @@
-# Another Markdown parsers but with super powers
+# Another Markdown parsers but with superpowers
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lemaur/markdown.svg?style=flat-square)](https://packagist.org/packages/lemaur/markdown)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lemaur/markdown/run-tests?label=tests)](https://github.com/lemaur/markdown/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lemaur/markdown/Check%20&%20fix%20styling?label=code%20style)](https://github.com/lemaur/markdown/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/lemaur/markdown.svg?style=flat-square)](https://packagist.org/packages/lemaur/markdown)
+[![License](https://img.shields.io/packagist/l/lemaur/markdown.svg?style=flat-square&color=yellow)](https://github.com/leMaur/markdown/blob/main/LICENSE.md)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lemaur/markdown/Tests?label=tests&style=flat-square)](https://github.com/lemaur/markdown/actions?query=workflow%3Atests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lemaur/markdown/Check%20&%20fix%20styling?label=code%20style&style=flat-square)](https://github.com/lemaur/markdown/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/lemaur?style=flat-square&color=ea4aaa)](https://github.com/sponsors/leMaur)
+[![Trees](https://img.shields.io/badge/dynamic/json?color=yellowgreen&style=flat-square&label=Trees&query=%24.total&url=https%3A%2F%2Fpublic.offset.earth%2Fusers%2Flemaur%2Ftrees)](https://ecologi.com/lemaur?r=6012e849de97da001ddfd6c9)
 
----
-This repo can be used as to scaffold a Laravel package. Follow these steps to get started:
+## Support Me
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this markdown
-2. Run "./configure-markdown.sh" to run a script that will replace all placeholders throughout all the files
-3. Remove this block of text.
-4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
+Hey folks,
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Do you like this package? Do you find it useful and it fits well in your project?
 
-## Support us
+I am glad to help you, and I would be so grateful if you considered supporting my work.
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/markdown.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/markdown)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+You can even choose 😃:
+* You can [sponsor me 😎](https://github.com/sponsors/leMaur) with a monthly subscription.
+* You can [buy me a coffee ☕ or a pizza 🍕](https://github.com/sponsors/leMaur?frequency=one-time&sponsor=leMaur) just for this package.
+* You can [plant trees 🌴](https://ecologi.com/lemaur?r=6012e849de97da001ddfd6c9). By using this link we will both receive 30 trees for free and the planet (and me) will thank you. 
+* You can "Star ⭐" this repository (it's free 😉).
 
 ## Installation
 
@@ -33,30 +30,25 @@ You can install the package via composer:
 composer require lemaur/markdown
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="Lemaur\Markdown\MarkdownServiceProvider" --tag="markdown-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 ```bash
 php artisan vendor:publish --provider="Lemaur\Markdown\MarkdownServiceProvider" --tag="markdown-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
 ```php
-$markdown = new Lemaur\Markdown();
-echo $markdown->echoPhrase('Hello, Spatie!');
+use Lemaur\Markdown;
+
+$markdown = <<<'MD'
+# Title
+
+a paragraph with [link](https://website.com).
+
+<x-custom-component></x-custom-component>
+MD;
+
+return Markdown::render($markdown);
 ```
 
 ## Testing
