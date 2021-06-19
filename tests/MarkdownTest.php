@@ -24,7 +24,7 @@ class MarkdownTest extends TestCase
     }
 
     /** @test */
-    public function it_cannot_renders_an_null_string()
+    public function it_cannot_renders_an_null_input()
     {
         $markdown = null;
 
@@ -53,12 +53,15 @@ class MarkdownTest extends TestCase
     public function it_can_renders_markdown_text_with_custom_blade_component()
     {
         $markdown = <<<'MD'
-            <x-html>
-                <x-body>
-                    # title
-                    a paragraph
-                </x-body>
-            </x-html>
+            # title
+            a paragraph
+
+            <x-ui-search-input
+                id="search"
+                action="/search"
+                label="search"
+                button="search"
+                />
             MD;
 
         $html = Markdown::render($markdown);
