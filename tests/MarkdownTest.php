@@ -13,7 +13,7 @@ class MarkdownTest extends TestCase
     use MatchesSnapshots;
 
     /** @test */
-    public function it_cannot_renders_an_empty_string()
+    public function it_cannot_renders_an_empty_string(): void
     {
         $markdown = '';
 
@@ -24,7 +24,7 @@ class MarkdownTest extends TestCase
     }
 
     /** @test */
-    public function it_cannot_renders_an_null_input()
+    public function it_cannot_renders_an_null_input(): void
     {
         $markdown = null;
 
@@ -35,7 +35,7 @@ class MarkdownTest extends TestCase
     }
 
     /** @test */
-    public function it_can_renders_a_simple_markdown_text()
+    public function it_can_renders_a_simple_markdown_text(): void
     {
         $markdown = <<<'MD'
             # Title
@@ -50,7 +50,7 @@ class MarkdownTest extends TestCase
     }
 
     /** @test */
-    public function it_can_renders_markdown_text_with_custom_blade_component()
+    public function it_can_renders_markdown_text_with_custom_blade_component(): void
     {
         $markdown = <<<'MD'
             # title

@@ -5,13 +5,9 @@ return [
     /**
      * Options
      *
-     * https://commonmark.thephpleague.com/1.6/configuration/
+     * https://commonmark.thephpleague.com/2.0/configuration/
      */
     'options' => [
-        'html_input' => \League\CommonMark\EnvironmentInterface::HTML_INPUT_ALLOW,
-        'allow_unsafe_links' => false,
-        'max_nesting_level' => PHP_INT_MAX,
-
         'renderer' => [
             'block_separator' => "\n",
             'inner_separator' => "\n",
@@ -26,91 +22,52 @@ return [
             'unordered_list_markers' => ['-', '*', '+'],
         ],
 
-        'external_link' => [
-            'internal_hosts' => env('APP_URL'),
-            'open_in_new_window' => true,
-            'html_class' => 'external-link',
-            'nofollow' => '',
-            'noopener' => 'external',
-            'noreferrer' => 'external',
+        'html_input' => 'allow',
+        'allow_unsafe_links' => false,
+        'max_nesting_level' => PHP_INT_MAX,
+        'slug_normalizer' => [
+            'max_length' => 255,
         ],
 
-        'footnote' => [
-            'backref_class'      => 'footnote-backref',
-            'container_add_hr'   => true,
-            'container_class'    => 'footnotes',
-            'ref_class'          => 'footnote-ref',
-            'ref_id_prefix'      => 'fnref:',
-            'footnote_class'     => 'footnote',
-            'footnote_id_prefix' => 'fn:',
-        ],
+        /**
+         * Keep in mind that some extensions may have it's own configuration.
+         * You can append here those configuration like explained by the example below...
+         */
 
-        'heading_permalink' => [
-            'html_class' => 'heading-permalink',
-            'id_prefix' => 'user-content',
-            'insert' => 'before',
-            'title' => 'Permalink',
-            'symbol' => \League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkRenderer::DEFAULT_SYMBOL,
-            'slug_normalizer' => new \League\CommonMark\Normalizer\SlugNormalizer(),
-        ],
-
-        'mentions' => [
-            // GitHub handler mention configuration.
-            // Sample Input:  `@colinodell`
-            // Sample Output: `<a href="https://www.github.com/colinodell">@colinodell</a>`
-//            'github_handle' => [
-//                'prefix'    => '@',
-//                'pattern'   => '[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}(?!\w)',
-//                'generator' => 'https://github.com/%s',
+//        // see https://commonmark.thephpleague.com/2.0/extensions/default-attributes/
+//        'default_attributes' => [
+//            \League\CommonMark\Extension\CommonMark\Node\Block\Heading::class => [
+//                'class' => static function (\League\CommonMark\Extension\CommonMark\Node\Block\Heading $node): string | null {
+//                    if ($node->getLevel() === 1) {
+//                        return 'title-main';
+//                    } else {
+//                        return null;
+//                    }
+//                },
 //            ],
-
-            // GitHub issue mention configuration.
-            // Sample Input:  `#473`
-            // Sample Output: `<a href="https://github.com/thephpleague/commonmark/issues/473">#473</a>`
-//            'github_issue' => [
-//                'prefix'    => '#',
-//                'pattern'   => '\d+',
-//                'generator' => "https://github.com/thephpleague/commonmark/issues/%d",
+//            \League\CommonMark\Extension\Table\Table::class => [
+//                'class' => 'table',
 //            ],
-
-            // Twitter handler mention configuration.
-            // Sample Input:  `@colinodell`
-            // Sample Output: `<a href="https://www.twitter.com/colinodell">@colinodell</a>`
-            // Note: when registering more than one mention parser with the same prefix, the last one registered will
-            // always take precedence.
-            'twitter_handle' => [
-                'prefix'    => '@',
-                'pattern'   => '[A-Za-z0-9_]{1,15}(?!\w)',
-                'generator' => 'https://twitter.com/%s',
-            ],
-        ],
-
-        'smartpunct' => [
-            'double_quote_opener' => '“',
-            'double_quote_closer' => '”',
-            'single_quote_opener' => '‘',
-            'single_quote_closer' => '’',
-        ],
-
-        'table_of_contents' => [
-            'html_class' => 'table-of-contents',
-            'position' => 'top',
-            'style' => 'bullet',
-            'min_heading_level' => 1,
-            'max_heading_level' => 6,
-            'normalize' => 'relative',
-            'placeholder' => null,
-        ],
-
+//            \League\CommonMark\Node\Block\Paragraph::class => [
+//                'class' => ['text-center', 'font-comic-sans'],
+//            ],
+//            \League\CommonMark\Extension\CommonMark\Node\Inline\Link::class => [
+//                'class' => 'btn btn-link',
+//                'target' => '_blank',
+//            ],
+//        ],
     ],
 
     /**
      * Extensions
      *
-     * https://commonmark.thephpleague.com/1.6/extensions/overview/
+     * `CommonMarkCoreExtension` is loaded by default,
+     * follow you can find a list of available extensions.
+     *
+     * https://commonmark.thephpleague.com/2.0/extensions/overview/
      */
     'extensions' => [
-        \League\CommonMark\Extension\CommonMarkCoreExtension::class,
+//        \League\CommonMark\Extension\GithubFlavoredMarkdownExtension::class,
 //        \League\CommonMark\Extension\Attributes\AttributesExtension::class,
 //        \League\CommonMark\Extension\Autolink\AutolinkExtension::class,
 //        \League\CommonMark\Extension\DisallowedRawHtml\DisallowedRawHtmlExtension::class,
