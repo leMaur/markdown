@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lemaur\Markdown\Tests\View\Components;
 
 use Illuminate\Support\Collection;
