@@ -25,7 +25,7 @@ class Markdown
             ->each(fn ($extension) => $environment->addExtension(new $extension()));
 
         $converter = new MarkdownConverter($environment);
-        $html = $converter->convertToHtml($text)->getContent();
+        $html = $converter->convert($text)->getContent();
 
         return new HtmlString((string) ViewFactory::parse($html));
     }
