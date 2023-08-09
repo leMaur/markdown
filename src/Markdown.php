@@ -7,7 +7,6 @@ namespace Lemaur\Markdown;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\Extension\ExtensionInterface;
 use League\CommonMark\MarkdownConverter;
 use Lemaur\Markdown\Support\ViewFactory;
 
