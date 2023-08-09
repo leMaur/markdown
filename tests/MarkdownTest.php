@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lemaur\Markdown\Tests;
 
 use Illuminate\Support\HtmlString;
+use Illuminate\View\Component;
 use Lemaur\Markdown\Markdown;
 use Spatie\Snapshots\MatchesSnapshots;
 
@@ -56,12 +57,7 @@ class MarkdownTest extends TestCase
             # title
             a paragraph
 
-            <x-ui-search-input
-                id="search"
-                action="/search"
-                label="search"
-                button="search"
-                />
+            <x-alert>error</x-alert>
             MD;
 
         $html = Markdown::render($markdown);
