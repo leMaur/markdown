@@ -1,0 +1,14 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 8
+    paths:
+        - src
+    excludePaths:
+        - src/Database/Schema/Blueprint
+    ignoreErrors:
+
+    tmpDir: build/phpstan
+    checkMissingIterableValueType: false
+

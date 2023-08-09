@@ -33,7 +33,7 @@ class ViewFactory
             ViewFacade::addLocation(sys_get_temp_dir());
         }
 
-        $tempFile = tempnam($tempDirectory, 'laravel-blade') . '.blade.php';
+        $tempFile = tempnam($tempDirectory, 'laravel-blade').'.blade.php';
 
         file_put_contents($tempFile, $template);
 

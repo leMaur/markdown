@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined method Illuminate\\\\View\\\\ViewFinderInterface\\:\\:getPaths\\(\\)\\.$#"
+			count: 1
+			path: src/Support/ViewFactory.php
+
+		-
+			message: "#^Parameter \\#1 \\$view of class Lemaur\\\\Markdown\\\\Support\\\\ViewFactory constructor expects Illuminate\\\\View\\\\View, Illuminate\\\\Contracts\\\\View\\\\Factory\\|Illuminate\\\\Contracts\\\\View\\\\View given\\.$#"
+			count: 1
+			path: src/Support/ViewFactory.php
