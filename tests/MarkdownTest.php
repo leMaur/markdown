@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lemaur\Markdown\Tests;
 
 use Illuminate\Support\HtmlString;
-use Illuminate\View\Component;
 use Lemaur\Markdown\Markdown;
 use Spatie\Snapshots\MatchesSnapshots;
 
