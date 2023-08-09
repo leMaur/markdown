@@ -23,7 +23,7 @@ class Markdown
         $environment->addExtension(new CommonMarkCoreExtension());
 
         collect((array) config('markdown.extensions', []))
-            ->each(fn (ExtensionInterface $extension) => $environment->addExtension(new $extension()));
+            ->each(fn ($extension) => $environment->addExtension(new $extension()));
 
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($text)->getContent();

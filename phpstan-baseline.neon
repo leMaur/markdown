@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#1 \\$extension of method League\\\\CommonMark\\\\Environment\\\\Environment\\:\\:addExtension\\(\\) expects League\\\\CommonMark\\\\Extension\\\\ExtensionInterface, object given\\.$#"
+			count: 1
+			path: src/Markdown.php
+
+		-
 			message: "#^Call to an undefined method Illuminate\\\\View\\\\ViewFinderInterface\\:\\:getPaths\\(\\)\\.$#"
 			count: 1
 			path: src/Support/ViewFactory.php
