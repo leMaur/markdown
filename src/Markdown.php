@@ -12,17 +12,17 @@ use Lemaur\Markdown\Support\ViewFactory;
 
 class Markdown
 {
-    public static function render(string $text = null): HtmlString
+    public static function render(?string $text = null): HtmlString
     {
         if (is_null($text)) {
             return new HtmlString;
         }
 
         $environment = new Environment((array) config('markdown.options', []));
-        $environment->addExtension(new CommonMarkCoreExtension());
+        $environment->addExtension(new CommonMarkCoreExtension);
 
         collect((array) config('markdown.extensions', []))
-            ->each(fn ($extension) => $environment->addExtension(new $extension()));
+            ->each(fn ($extension) => $environment->addExtension(new $extension));
 
         $converter = new MarkdownConverter($environment);
         $html = $converter->convert($text)->getContent();
