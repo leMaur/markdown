@@ -17,15 +17,15 @@ class TestCase extends Orchestra
         Blade::component('alert', Alert::class);
     }
 
+    public function getEnvironmentSetUp($app)
+    {
+        $app['config']->set('markdown', include __DIR__.'/../config/markdown.php');
+    }
+
     protected function getPackageProviders($app)
     {
         return [
             MarkdownServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        $app['config']->set('markdown', include __DIR__.'/../config/markdown.php');
     }
 }
