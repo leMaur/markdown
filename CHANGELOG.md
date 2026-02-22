@@ -2,6 +2,14 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 2.1.0 - 2026-02-22
+
+### What's Changed
+
+* Upgrade to Laravel 12 by @leMaur in https://github.com/leMaur/markdown/pull/13
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/2.0.1...2.1.0
+
 ## 2.0.1 - 2026-02-22
 
 ### What's Changed
