@@ -12,7 +12,7 @@ class MarkdownTest extends TestCase
 {
     use MatchesSnapshots;
 
-    public function testCannotRendersAnEmptyString(): void
+    public function test_cannot_renders_an_empty_string(): void
     {
         $markdown = '';
 
@@ -22,7 +22,7 @@ class MarkdownTest extends TestCase
         $this->assertTrue($html->isEmpty());
     }
 
-    public function testCannotRendersAnNullInput(): void
+    public function test_cannot_renders_an_null_input(): void
     {
         $markdown = null;
 
@@ -32,7 +32,7 @@ class MarkdownTest extends TestCase
         $this->assertTrue($html->isEmpty());
     }
 
-    public function testCanRendersASimpleMarkdownText(): void
+    public function test_can_renders_a_simple_markdown_text(): void
     {
         $markdown = <<<'MD'
             # Title
@@ -46,7 +46,7 @@ class MarkdownTest extends TestCase
         $this->assertMatchesHtmlSnapshot($html->toHtml());
     }
 
-    public function testCanRendersMarkdownTextWithCustomBladeComponent(): void
+    public function test_can_renders_markdown_text_with_custom_blade_component(): void
     {
         $markdown = <<<'MD'
             # title
