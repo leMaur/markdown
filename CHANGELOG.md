@@ -2,6 +2,17 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 2.2.0 - 2026-03-19
+
+### What's Changed
+
+* chore(deps): bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/14
+* chore(deps): bump actions/checkout from 4 to 6 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/15
+* chore(deps): bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/16
+* Add Laravel 13 and PHP 8.5 support by @leMaur in https://github.com/leMaur/markdown/pull/17
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/2.1.0...2.2.0
+
 ## 2.1.0 - 2026-02-22
 
 ### What's Changed
