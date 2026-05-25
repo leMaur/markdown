@@ -2,6 +2,14 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 3.0.0 - 2026-05-25
+
+### What's Changed
+
+* feat!: drop EOL Laravel 10 + PHP 8.1 (require L11+, PHP 8.2+) by @leMaur in https://github.com/leMaur/markdown/pull/20
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/2.2.0...3.0.0
+
 ## 2.2.0 - 2026-03-19
 
 ### What's Changed
