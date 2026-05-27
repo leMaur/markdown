@@ -2,6 +2,18 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 3.0.1 - 2026-05-27
+
+### What's Changed
+
+* chore(ci): pin actions to SHAs + gate dependabot auto-merge on tests by @leMaur in https://github.com/leMaur/markdown/pull/21
+* chore: SHA-pin actions + least-privilege permissions + gate Dependabot auto-merge by @leMaur in https://github.com/leMaur/markdown/pull/22
+* chore(ci): canary — PR-based signed-merge flow (branch-protection enablement) by @leMaur in https://github.com/leMaur/markdown/pull/23
+* fix(ci): pint check-only (no codebase mutation) by @leMaur in https://github.com/leMaur/markdown/pull/24
+* chore(ci): converge changelog on shared peter-evans pattern by @leMaur in https://github.com/leMaur/markdown/pull/25
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/3.0.0...3.0.1
+
 ## 3.0.0 - 2026-05-25
 
 ### What's Changed
