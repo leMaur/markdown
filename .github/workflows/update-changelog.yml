@@ -1,11 +1,9 @@
 name: "Update Changelog"
 
-# PR-based flow: on a release, update CHANGELOG.md on a dedicated branch, open
-# a PR, and squash-merge it. The squash commit is created by GitHub and is
-# therefore SIGNED — satisfying the `required_signatures` rule on main. We do
-# NOT push directly to main (blocked by the `pull_request` rule). The bot can
-# merge because the ruleset requires 0 approvals (solo repo); admin bypass keeps
-# Mau's own direct access intact.
+# PR-based flow (shared leMaur OSS pattern): direct push to main is blocked by
+# branch protection, so the changelog update is opened as a PR. The squash-merge
+# (by GitHub) is signed, satisfying required_signatures on main. This is the sole
+# workflow permitted to change the codebase — all other CI checks are read-only.
 on:
   release:
     types: [released]
@@ -17,7 +15,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
 
     steps:
       - name: Checkout code
@@ -31,25 +29,16 @@ jobs:
           latest-version: ${{ github.event.release.name }}
           release-notes: ${{ github.event.release.body }}
 
-      - name: Open and squash-merge the changelog PR
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERSION: ${{ github.event.release.name }}
-        run: |
-          set -euo pipefail
-          branch="changelog/${VERSION}"
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # No-op guard: if the action produced no changes, do nothing.
-          if git diff --quiet -- CHANGELOG.md; then
-            echo "CHANGELOG.md unchanged; nothing to do."
-            exit 0
-          fi
-          git switch -c "$branch"
-          git add CHANGELOG.md
-          git commit -m "Update CHANGELOG for ${VERSION}"
-          git push origin "$branch"
-          gh pr create --base main --head "$branch" \
-            --title "Update CHANGELOG for ${VERSION}" \
-            --body "Automated changelog update for ${VERSION}."
-          gh pr merge "$branch" --squash --delete-branch
+      - name: Open changelog PR
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v7
+        with:
+          commit-message: "docs: update CHANGELOG for ${{ github.event.release.tag_name }}"
+          title: "docs: update CHANGELOG for ${{ github.event.release.tag_name }}"
+          body: |
+            Automated CHANGELOG update for release [`${{ github.event.release.tag_name }}`](${{ github.event.release.html_url }}).
+
+            Direct push to `main` is blocked by branch protection, so this PR is opened instead.
+          branch: chore/changelog-${{ github.event.release.tag_name }}
+          base: main
+          delete-branch: true
+          add-paths: CHANGELOG.md
