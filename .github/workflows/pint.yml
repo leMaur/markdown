@@ -1,6 +1,11 @@
 name: Check & Fix code style
 
-on: [push]
+# PR-based flow: Pint runs on pull requests and commits style fixes to the PR
+# head branch. It NO LONGER pushes directly to main — main is protected by a
+# branch ruleset (require PR + signed commits + linear history). Style fixes
+# reach main only through the squash-merge of the PR, which GitHub signs.
+on:
+  pull_request:
 
 permissions:
   contents: write
@@ -8,6 +13,7 @@ permissions:
 jobs:
   php-code-styling:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     steps:
       - name: Checkout code
@@ -18,7 +24,7 @@ jobs:
       - name: Fix code styling issues
         uses: aglipanci/laravel-pint-action@36de00d5f5a8a4e12d443e01671daa12a18f4c79 # 2.6
 
-      - name: Commit changes
+      - name: Commit changes to the PR branch
         uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7
         with:
           commit_message: 'style: resolve style guide violations'
