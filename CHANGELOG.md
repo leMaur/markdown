@@ -2,6 +2,19 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 3.0.2 - 2026-06-01
+
+### What's Changed
+
+* docs: update CHANGELOG for 3.0.1 by @github-actions[bot] in https://github.com/leMaur/markdown/pull/26
+* chore(ci): add Composer audit gate and composer-normalize by @leMaur in https://github.com/leMaur/markdown/pull/27
+
+### New Contributors
+
+* @github-actions[bot] made their first contribution in https://github.com/leMaur/markdown/pull/26
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/3.0.1...3.0.2
+
 ## 3.0.1 - 2026-05-27
 
 ### What's Changed
