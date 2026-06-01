@@ -1,13 +1,12 @@
 {
     "name": "lemaur/markdown",
     "description": "Another Markdown parsers but with super powers",
+    "license": "MIT",
     "keywords": [
         "lemaur",
         "laravel",
         "markdown"
     ],
-    "homepage": "https://github.com/lemaur/markdown",
-    "license": "MIT",
     "authors": [
         {
             "name": "Maurizio",
@@ -15,20 +14,24 @@
             "role": "Developer"
         }
     ],
+    "homepage": "https://github.com/lemaur/markdown",
     "require": {
         "php": "^8.2",
-        "spatie/laravel-package-tools": "^1.4.3",
-        "illuminate/contracts": "^11.0|^12.0|^13.0",
-        "league/commonmark": "^2.0"
+        "illuminate/contracts": "^11.0 || ^12.0 || ^13.0",
+        "league/commonmark": "^2.0",
+        "spatie/laravel-package-tools": "^1.4.3"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.42",
         "laravel/pint": "^1.0",
-        "orchestra/testbench": "^9.0|^10.0|^11.0",
-        "phpstan/phpstan-deprecation-rules": "^1.1.1|^2.0",
-        "phpstan/phpstan-phpunit": "^1.3.3|^2.0",
-        "phpunit/phpunit": "^11.0|^12.0",
+        "orchestra/testbench": "^9.0 || ^10.0 || ^11.0",
+        "phpstan/phpstan-deprecation-rules": "^1.1.1 || ^2.0",
+        "phpstan/phpstan-phpunit": "^1.3.3 || ^2.0",
+        "phpunit/phpunit": "^11.0 || ^12.0",
         "spatie/phpunit-snapshot-assertions": "^5.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Lemaur\\Markdown\\": "src"
@@ -39,13 +42,22 @@
             "Lemaur\\Markdown\\Tests\\": "tests"
         }
     },
-    "scripts": {
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
-        "format": "vendor/bin/pint"
-    },
     "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
+        "policy": {
+            "advisories": {
+                "block": true
+            },
+            "malware": {
+                "block": true,
+                "block-scope": "all"
+            },
+            "abandoned": {
+                "audit": "report"
+            }
+        },
         "sort-packages": true
     },
     "extra": {
@@ -55,6 +67,11 @@
             ]
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "scripts": {
+        "post-autoload-dump": "composer normalize",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    }
 }
