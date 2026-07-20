@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
-use Lemaur\Markdown\Support\ViewFactory;
+use Lemaur\Markdown\Extensions\BladeParsingExtension;
 
 class Markdown
 {
@@ -24,9 +24,11 @@ class Markdown
         collect((array) config('markdown.extensions', []))
             ->each(fn ($extension) => $environment->addExtension(new $extension));
 
-        $converter = new MarkdownConverter($environment);
-        $html = $converter->convert($text)->getContent();
+        // Resolves Blade components in the output while keeping code blocks literal.
+        $environment->addExtension(new BladeParsingExtension);
 
-        return new HtmlString((string) ViewFactory::parse($html));
+        $converter = new MarkdownConverter($environment);
+
+        return new HtmlString($converter->convert($text)->getContent());
     }
 }
