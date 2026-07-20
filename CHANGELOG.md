@@ -2,6 +2,22 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 4.0.0 - 2026-07-20
+
+### What's Changed
+
+* docs: update CHANGELOG for 3.0.2 by @github-actions[bot] in https://github.com/leMaur/markdown/pull/28
+* fix(ci): never auto-merge an untested head in dependabot-auto-merge by @leMaur in https://github.com/leMaur/markdown/pull/29
+* chore(deps): bump actions/checkout from 6.0.2 to 6.0.3 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/30
+* chore(deps): bump shivammathur/setup-php from 2.37.1 to 2.37.2 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/32
+* ci: set persist-credentials: false on checkout steps by @leMaur in https://github.com/leMaur/markdown/pull/33
+* chore(deps): bump ramsey/composer-install from 5c2bcf28d7b060ef3c601d7b476d5430a7b46c27 to 26d8a556604053a9612623447203a691f406fbe6 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/31
+* chore(deps): bump actions/cache from 5.0.5 to 6.1.0 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/35
+* chore(deps): bump actions/checkout from 6.0.3 to 7.0.0 by @dependabot[bot] in https://github.com/leMaur/markdown/pull/34
+* feat!: protect code blocks from the Blade rendering pass by @leMaur in https://github.com/leMaur/markdown/pull/36
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/3.0.2...4.0.0
+
 ## 3.0.2 - 2026-06-01
 
 ### What's Changed
