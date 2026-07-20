@@ -51,6 +51,24 @@ MD;
 return Markdown::render($markdown);
 ```
 
+Code blocks are safe: any Blade-looking syntax inside a fenced (```` ``` ````), indented,
+or inline (`` ` ``) code block is displayed as literal text, never executed. So you can
+document components without them rendering:
+
+````markdown
+```blade
+<x-custom-component></x-custom-component>
+```
+````
+
+This code-block protection is based on Aaron Francis' article
+[Rendering Blade Components in Markdown](https://aaronfrancis.com/2023/rendering-blade-components-in-markdown-e2e74e55).
+
+> **⚠️ Only render trusted content.** `Markdown::render()` runs the Blade compiler over the
+> document body (outside code blocks), so any Blade or PHP in the prose is executed. Never pass
+> user-generated Markdown to it. Protection covers CommonMark code constructs only — raw HTML
+> `<pre>`/`<code>` you write by hand is treated as HTML and is not shielded from Blade.
+
 ## Testing
 
 ```bash
@@ -72,6 +90,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Maurizio](https://github.com/leMaur)
+- [Aaron Francis](https://aaronfrancis.com) — the code-block protection approach is based on his article [Rendering Blade Components in Markdown](https://aaronfrancis.com/2023/rendering-blade-components-in-markdown-e2e74e55)
 - [All Contributors](../../contributors)
 
 ## License
