@@ -2,6 +2,16 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 4.0.1 - 2026-09-07
+
+### What's Changed
+
+* fix: keep the temporary view after the Blade pass by @leMaur in https://github.com/leMaur/markdown/pull/39
+
+The Blade pass no longer deletes the temporary view it renders each document through. Deleting it raced under multi-worker servers (Laravel Octane / FrankenPHP): one worker could unlink the file while another had just resolved the same content-hash filename, raising `View [hash] not found`. The file count is bounded by the number of distinct documents and is cleared together with the other compiled views.
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/4.0.0...4.0.1
+
 ## 4.0.0 - 2026-07-20
 
 ### What's Changed
