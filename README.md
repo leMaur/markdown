@@ -64,6 +64,12 @@ document components without them rendering:
 This code-block protection is based on Aaron Francis' article
 [Rendering Blade Components in Markdown](https://aaronfrancis.com/2023/rendering-blade-components-in-markdown-e2e74e55).
 
+The Blade pass compiles each document through a temporary view in Laravel's compiled-view
+directory, keyed by the content hash. That file is kept after rendering (never unlinked), which
+makes the package safe under multi-worker servers such as Laravel Octane, where deleting it
+would race with another worker rendering the same document. The number of files is bounded by
+the number of distinct documents and they are cleared together with the other compiled views.
+
 > **⚠️ Only render trusted content.** `Markdown::render()` runs the Blade compiler over the
 > document body (outside code blocks), so any Blade or PHP in the prose is executed. Never pass
 > user-generated Markdown to it. Protection covers CommonMark code constructs only — raw HTML

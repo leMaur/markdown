@@ -85,10 +85,15 @@ final class BladeParsingExtension implements ExtensionInterface
 
     public function onDocumentRendered(DocumentRenderedEvent $event): void
     {
-        // deleteCachedView (3rd arg) stops Laravel from accumulating one compiled
-        // view file per distinct document; it still uses the compiled-view cache
-        // during the render itself.
-        $content = Blade::render($event->getOutput()->getContent(), [], true);
+        // The temporary view Laravel creates for this string lives in the compiled-view
+        // directory under a filename derived from the content hash, so it is shared by
+        // every worker rendering the same document. It must NOT be deleted after the
+        // render (Blade::render's third argument): under a multi-worker server such as
+        // Octane/FrankenPHP, one worker unlinking the file while another has just
+        // resolved the same filename raises "View [hash] not found". The file count is
+        // bounded by the number of distinct documents and is cleared with the rest of
+        // the compiled views (view:clear / deploys).
+        $content = Blade::render($event->getOutput()->getContent());
 
         if ($this->rendered !== []) {
             $replacements = [];
