@@ -2,6 +2,17 @@
 
 All notable changes to `markdown` will be documented in this file.
 
+## 4.0.2 - 2026-10-21
+
+### What's Changed
+
+* fix(deps): require patched league/commonmark and support PHPUnit 13 by @leMaur in https://github.com/leMaur/markdown/pull/42
+* test: render a unique document in the compiled view lifecycle test by @leMaur in https://github.com/leMaur/markdown/pull/43
+
+The minimum `league/commonmark` version is now 2.10.2. Versions up to 2.10.1 are affected by several advisories: quadratic-time and other denial-of-service issues, an `on*` filter bypass in `AttributesExtension`, and a `DisallowedRawHtml` bypass. Rendering output is unchanged.
+
+**Full Changelog**: https://github.com/leMaur/markdown/compare/4.0.1...4.0.2
+
 ## 4.0.1 - 2026-09-07
 
 ### What's Changed
