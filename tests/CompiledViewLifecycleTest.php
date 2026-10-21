@@ -10,10 +10,14 @@ class CompiledViewLifecycleTest extends TestCase
 {
     public function test_it_keeps_the_temporary_view_after_rendering(): void
     {
-        $markdown = <<<'MD'
+        // A unique document per run: its compiled view name comes from the content
+        // hash, so a fixed document would already be on disk from an earlier run.
+        $token = bin2hex(random_bytes(8));
+
+        $markdown = <<<MD
             # Kept on disk
 
-            A paragraph rendered through the Blade pass.
+            A paragraph rendered through the Blade pass ({$token}).
             MD;
 
         $before = $this->compiledViewCount();
